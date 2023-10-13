@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaffWiki</title>
+
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../css/search.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+
+        <!-- Search Form with Dropdown -->
+        <form id="searchForm" class="form-inline mb-3">
+            <div class="form-group mr-2">
+                <select class="form-control" id="searchType">
+                    <option value="eircode">Eircode</option>
+                    <option value="address">Address</option>
+                </select>
+            </div>
+            <div class="form-group mr-2">
+                <input type="text" class="form-control" id="searchInput" placeholder="Enter your search">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="performSearch">Search</button>
+        </form>
+
+        <!-- Results Container -->
+        <div id="searchResults" class="mt-4">
+            <div class="card mb-3">
+                <a href="https://rb.gy/6gzq1">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> D08VW25</h5>
+                        <p class="card-text"><!--<i class="fas fa-address-book">--></i> 61 Cork St</p>
+                        <p class="card-text">
+                            <i class="fas fa-star-half-alt"></i> 2.1
+                            <i class="fas fa-solid fa-user ml-2"></i> 2
+                            <i class="fas fa-comment ml-2"></i> 7
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="divider"></div>
+            <div class="card mb-3">
+                <a href="#">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> E5678</h5>
+                        <p class="card-text"><!--<i class="fas fa-address-book">--></i> 22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united people's republic of greater Ireland</p>
+                        <p class="card-text">
+                            <i class="fas fa-star"></i> 4.5
+                            <i class="fas fa-solid fa-user ml-2"></i> 2
+                            <i class="fas fa-comment ml-2"></i> 7
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js (for dropdowns) from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="../js/data/search-data.js"></script> 
+    <script src="../js/components/search-results.js"></script> 
+    <script src="../js/search.js"></script> 
+</body>
+
+</html>
