@@ -1,0 +1,67 @@
+#commentForm {
+    margin-bottom: 20px;
+}
+
+#commentText {
+    resize: none;
+}
+
+#commentDisplay {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#commentDisplay .comment {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+#commentDisplay .comment:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.review-topic i {
+    font-size: 65%;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.review-topic p {
+    opacity: 80%;
+}
+
+
+/*
+FIXME: This seems like bad practice and that it might be better
+to have a shared class that didn't have this style and then have a specific search css to add this style.
+
+Maybe have like...card-focus class or something
+*/
+/* Undo the hover in the search */
+.card:hover {
+    transform: scale(1);
+    box-shadow: none;
+    cursor: pointer;
+}
+
+
+
+
+
+.see-more-less {
+    opacity: 70%;
+    transition: 0.5s ease;
+}
+.see-more-less:hover {
+    opacity: 100%;
+    transition: 0.5s ease;
+}
+.not-visible {
+    display: none;
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaffWiki</title>
+
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/property.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+                <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+            </div>
+            <div class="col-6 text-right">
+                <div class="header-button">
+                    <button class="btn btn-primary" onclick="openReviewForm"><i class="fas fa-plus-circle"></i>
+                        Review</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Form with Dropdown -->
+        <h4 class="card-title text-secondary">D08VW25</h4> <!-- FIXME: Add in a loc icon and google link-->
+        <p class="card-text">61 Cork street, St Catherine's</p>
+
+        <!-- Results Container -->
+        <div id="searchResults row" class="mt-4">
+            <div class="divider"></div> <!-- FIXME: maybe add in a year or something like : ----2023---- -->
+            <div class="card mb-3">
+                <div class="card-body review-heading">
+                    <!-- FIXME: Get rid of card hover and add chevron animation -->
+                    <h5 class="card-title">Wonderful location for a family</h5>
+                    <p class="card-text"><i class="fas fa-calendar"></i> Dec 2021 - Oct 2023</p>
+                    <p class="card-text mb-0">
+                        <i class="fas fa-star"></i>4.5
+                        <i class="fas fa-thumbs-up"></i>10
+                        <i class="far fa-comment"></i> 5
+                         <!-- <span class="text-primary see-more">see more</span> -->
+                    </p>
+                    <p class="text-primary mt-0 mb-0 see-more-less see-more" data-toggle="collapse" href="#review1">see more</p>
+                    <p class="text-primary mt-0 mb-0 see-more-less see-less not-visible">see less</p>
+                    <!-- FIXME: make this flip when clicked -->
+                </div>
+
+                <!-- <div id="review1" class="collapse col-10" style="margin-left: auto; margin-right: auto;"> -->
+                <div id="review1" class="collapse">
+                    <div class="divider col-8 text-primary" style="margin-left: auto; margin-right: auto;"></div>
+
+                    <!-- Safety -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Safety
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>
+                        </h4>
+                        <p>The building is mostly safe really</p>
+                    </div>
+
+                    <!-- Building -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Building
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i
+                                class="fas fa-solid fa-star-half text-secondary"></i>
+                            <!-- FIXME: This is a little bit icky inside without a span and needing to be inline -->
+                        </h4>
+
+                        <p>
+                            I've been living in this apartment building for a little over a year now, and while there
+                            are
+                            some great aspects to it, there are also a couple of significant downsides.
+                        </p>
+
+                        <p>
+                            One of the most significant advantages of this apartment building is its central location.
+                            It's incredibly convenient to have easy access to downtown and all the amenities it offers.
+                            Within walking distance, you'll find restaurants, shops, and public transportation, making
+                            it ideal for those who want to enjoy city living.
+                        </p>
+
+                        <p>
+                            Unfortunately, there are a couple of issues that have affected my overall satisfaction with
+                            this place.
+                            Firstly, the elevator has been a constant source of frustration. It breaks down
+                            semi-regularly, and it
+                            seems to happen about once a month on average. This can be especially inconvenient if you
+                            live on one
+                            of the higher floors. Waiting for repairs and having to climb multiple flights of stairs is
+                            not something
+                            you want to deal with regularly.
+                        </p>
+
+                        <p>
+                            Secondly, during the summer months, there is a noticeable problem with flies. It's not just
+                            a minor annoyance;
+                            it can be quite bothersome, especially if you like to keep your windows open to enjoy the
+                            fresh air. This issue
+                            should be addressed more proactively, as it affects the overall quality of living in the
+                            building.
+                        </p>
+
+                        <p>
+                            In conclusion, this apartment building has a lot of potential due to its central location,
+                            but it definitely needs
+                            improvement in certain areas. The elevator's frequent breakdowns are a major inconvenience,
+                            and the summertime fly
+                            problem is unpleasant. If these issues were addressed, it could be a much more attractive
+                            place to live.
+                        </p>
+                    </div>
+
+                    <!-- Noise -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Noise
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i
+                                class="fas fa-star text-secondary"></i><i
+                                class="fas fa-solid fa-star-half text-secondary"></i>
+                        </h4>
+                        <p>Mostly quite in the living room.</p>
+                        <p>Unfortunately the bedrooms are on a fairly busy road and even at night you will find yourself
+                            struggling to sleep.
+                            Fortunately the building is on the 6th floor an so the noise is no where near as unbearable
+                            as if you were on
+                            the ground floor.
+                        </p>
+                    </div>
+
+                    <!-- Pros --> <!-- FIXME: Definitely a bit ugly -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Pros & cons
+                        </h4>
+                        <p class="mb-0"><i class="fas fa-plus"></i> Location</p>
+                        <p class="mb-0"><i class="fas fa-plus"></i> Rent</p>
+                        <p class="mb-0"><i class="fas fa-minus"></i> Landlord</p>
+                        <p class="mb-0"><i class="fas fa-minus"></i> Smell</p>
+                    </div>
+
+                    <!-- General comments -->
+                    <div class="card-body review-topic">
+                        <h4>Summary</h4>
+                        <p>To summarize. This is a wonderful property for young professional renters or anyone looking
+                            to get into a new property.</p>
+                    </div>
+
+                    <!-- Comment section --> <!-- FIXME: think about adding in comments at a later date-->
+                    <!-- <div class="mb-3">
+                        <div class="card-body">
+                    
+                            <form id="commentForm">
+                                <div class="form-group">
+                                    <label for="commentText">Add a Comment:</label>
+                                    <textarea class="form-control" id="commentText" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                    
+                            <div id="commentDisplay">
+
+                                    <div class="comment">
+                                        <p><strong>User 1:</strong> This property is amazing! I love the location and the views.</p>
+                                        <small>Posted on Jan 10, 2023</small>
+                                    </div>
+
+                                    
+                                    <div class="comment">
+                                        <p><strong>User 2:</strong> The building is quite noisy during the evenings, but overall, it's a good place to live.</p>
+                                        <small>Posted on Feb 5, 2023</small>
+                                    </div>
+                                
+
+                                    <div class="comment">
+                                        <p><strong>User 3:</strong> I agree with User 2, noise can be an issue, but the pros outweigh the cons.</p>
+                                        <small>Posted on Mar 20, 2023</small>
+                                    </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divider"></div>
+
+            
+
+
+            <div class="card mb-3">
+                <div class="card-body review-heading">
+                    <!-- FIXME: Get rid of card hover and add chevron animation -->
+                    <h5 class="card-title">I thoroughly enjoyed my stay for 3 months in my airbnb</h5>
+                    <p class="card-text"><i class="fas fa-calendar"></i> Aug 2020 - Oct 2022</p>
+                    <p class="card-text mb-0">
+                        <i class="fas fa-star"></i>4.2
+                        <i class="fas fa-thumbs-up"></i>0
+                        <i class="far fa-comment"></i> 0
+                         <!-- <span class="text-primary see-more">see more</span> -->
+                    </p>
+                    <p class="text-primary mt-0 mb-0 see-more-less see-more" data-toggle="collapse" href="#review2">see more</p>
+                    <p class="text-primary mt-0 mb-0 see-more-less see-less not-visible">see less</p>
+                    <!-- FIXME: make this flip when clicked -->
+                </div>
+
+                <!-- <div id="review1" class="collapse col-10" style="margin-left: auto; margin-right: auto;"> -->
+                <div id="review2" class="collapse">
+                    <div class="divider col-8 text-primary" style="margin-left: auto; margin-right: auto;"></div>
+
+                    <!-- Safety -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Safety
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>
+                        </h4>
+                        <p>The building is mostly safe really</p>
+                    </div>
+
+                    <!-- Building -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Building
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i
+                                class="fas fa-solid fa-star-half text-secondary"></i>
+                            <!-- FIXME: This is a little bit icky inside without a span and needing to be inline -->
+                        </h4>
+
+                        <p>
+                            I've been living in this apartment building for a little over a year now, and while there
+                            are
+                            some great aspects to it, there are also a couple of significant downsides.
+                        </p>
+
+                        <p>
+                            One of the most significant advantages of this apartment building is its central location.
+                            It's incredibly convenient to have easy access to downtown and all the amenities it offers.
+                            Within walking distance, you'll find restaurants, shops, and public transportation, making
+                            it ideal for those who want to enjoy city living.
+                        </p>
+
+                        <p>
+                            Unfortunately, there are a couple of issues that have affected my overall satisfaction with
+                            this place.
+                            Firstly, the elevator has been a constant source of frustration. It breaks down
+                            semi-regularly, and it
+                            seems to happen about once a month on average. This can be especially inconvenient if you
+                            live on one
+                            of the higher floors. Waiting for repairs and having to climb multiple flights of stairs is
+                            not something
+                            you want to deal with regularly.
+                        </p>
+
+                        <p>
+                            Secondly, during the summer months, there is a noticeable problem with flies. It's not just
+                            a minor annoyance;
+                            it can be quite bothersome, especially if you like to keep your windows open to enjoy the
+                            fresh air. This issue
+                            should be addressed more proactively, as it affects the overall quality of living in the
+                            building.
+                        </p>
+
+                        <p>
+                            In conclusion, this apartment building has a lot of potential due to its central location,
+                            but it definitely needs
+                            improvement in certain areas. The elevator's frequent breakdowns are a major inconvenience,
+                            and the summertime fly
+                            problem is unpleasant. If these issues were addressed, it could be a much more attractive
+                            place to live.
+                        </p>
+                    </div>
+
+                    <!-- Noise -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Noise
+                            <i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i><i
+                                class="fas fa-star text-secondary"></i><i
+                                class="fas fa-solid fa-star-half text-secondary"></i>
+                        </h4>
+                        <p>Mostly quite in the living room.</p>
+                        <p>Unfortunately the bedrooms are on a fairly busy road and even at night you will find yourself
+                            struggling to sleep.
+                            Fortunately the building is on the 6th floor an so the noise is no where near as unbearable
+                            as if you were on
+                            the ground floor.
+                        </p>
+                    </div>
+
+                    <!-- Pros --> <!-- FIXME: Definitely a bit ugly -->
+                    <div class="card-body review-topic">
+                        <h4>
+                            Pros & cons
+                        </h4>
+                        <p class="mb-0"><i class="fas fa-plus"></i> Location</p>
+                        <p class="mb-0"><i class="fas fa-plus"></i> Rent</p>
+                        <p class="mb-0"><i class="fas fa-minus"></i> Landlord</p>
+                        <p class="mb-0"><i class="fas fa-minus"></i> Smell</p>
+                    </div>
+
+                    <!-- General comments -->
+                    <div class="card-body review-topic">
+                        <h4>Summary</h4>
+                        <p>To summarize. This is a wonderful property for young professional renters or anyone looking
+                            to get into a new property.</p>
+                    </div>
+
+                    <!-- Comment section --> <!-- FIXME: think about adding in comments at a later date-->
+                    <!-- <div class="mb-3">
+                        <div class="card-body">
+                    
+                            <form id="commentForm">
+                                <div class="form-group">
+                                    <label for="commentText">Add a Comment:</label>
+                                    <textarea class="form-control" id="commentText" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                    
+                            <div id="commentDisplay">
+
+                                    <div class="comment">
+                                        <p><strong>User 1:</strong> This property is amazing! I love the location and the views.</p>
+                                        <small>Posted on Jan 10, 2023</small>
+                                    </div>
+
+                                    
+                                    <div class="comment">
+                                        <p><strong>User 2:</strong> The building is quite noisy during the evenings, but overall, it's a good place to live.</p>
+                                        <small>Posted on Feb 5, 2023</small>
+                                    </div>
+                                
+
+                                    <div class="comment">
+                                        <p><strong>User 3:</strong> I agree with User 2, noise can be an issue, but the pros outweigh the cons.</p>
+                                        <small>Posted on Mar 20, 2023</small>
+                                    </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js (for dropdowns) from a CDN -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- from property old -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- Custom js -->
+    <script src="../js/property.js"></script>
+    <!-- <script src="../js/data/search-data.js"></script>
+    <script src="../js/components/search-results.js"></script>
+    <script src="../js/search.js"></script> -->
+</body>
+
+</html>
