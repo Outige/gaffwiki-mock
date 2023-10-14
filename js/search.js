@@ -9,42 +9,63 @@ const searchInput = document.getElementById('searchInput');
 const searchTypeSelect = document.getElementById('searchType');
 
 /* Functions */
-function search() {
+// HERE
+  
+
+function filterSearch(searchData) {
+    // const searchData = fetchDataWithCORS('https://3mtfm3nngqn7j2bhj3uw2mprha0lvqov.lambda-url.eu-west-1.on.aws/');
     const key = searchInput.value.trim().toLowerCase()
-    const reducedDummyData = []
+    const reducedSearchData = []
     const searchType = searchTypeSelect.options[searchTypeSelect.selectedIndex].value.trim().toLowerCase();
     
     if (key === '') {
-        return dummyData;
+        return searchData;
     }
 
-    for (var i = 0; i < dummyData.length; i++) {
-        if (dummyData[i] === undefined) {
+    for (var i = 0; i < searchData.length; i++) {
+        if (searchData[i] === undefined) {
             continue;
         }
 
         if (searchType === 'eircode') {
-            const eircode = dummyData[i]['eircode'].toLowerCase()
+            const eircode = searchData[i]['eircode'].toLowerCase()
             if (key.includes(eircode) || eircode.includes(key)) {
-                reducedDummyData.push(dummyData[i])
+                reducedSearchData.push(searchData[i])
             }
         }
 
         if (searchType === 'address') {
-            const address = dummyData[i]['address'].toLowerCase()
+            const address = searchData[i]['address'].toLowerCase()
             if (key.includes(address) || address.includes(key)) {
-                reducedDummyData.push(dummyData[i])
+                reducedSearchData.push(searchData[i])
             }
         }
     }
-    return reducedDummyData
+    return reducedSearchData
 
-    // return dummyData; // TODO: add logic to call endpoints and get proper data  
+    // return searchData; // TODO: add logic to call endpoints and get proper data  
 }
 
 function performSearch() {
-    const searchData = search();
-    refreshSearchResults(searchData);
+    fetch('https://3mtfm3nngqn7j2bhj3uw2mprha0lvqov.lambda-url.eu-west-1.on.aws/')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(data => {
+            performSearchOld(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function performSearchOld(searchData) {
+    const filteredSearchData = filterSearch(searchData);
+    refreshSearchResults(filteredSearchData);
 
 }
 
