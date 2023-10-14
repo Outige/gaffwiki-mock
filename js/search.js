@@ -4,41 +4,64 @@ FIXME: Big list of FIXMEs
 
 */
 
+/* Constants */
+const searchInput = document.getElementById('searchInput');
+const searchTypeSelect = document.getElementById('searchType');
+
+/* Functions */
 function search() {
-    return dummyData; // TODO: add logic to call endpoints and get proper data  
+    const key = searchInput.value.trim().toLowerCase()
+    const reducedDummyData = []
+    const searchType = searchTypeSelect.options[searchTypeSelect.selectedIndex].value.trim().toLowerCase();
+    console.log(key, searchType, key === '')
+    
+    if (key === '') {
+        return dummyData;
+    }
+
+    for (var i = 0; i < dummyData.length; i++) {
+        if (dummyData[i] === undefined) {
+            continue;
+        }
+
+        if (searchType === 'eircode') {
+            const eircode = dummyData[i]['eircode'].toLowerCase()
+            if (key.includes(eircode) || eircode.includes(key)) {
+                reducedDummyData.push(dummyData[i])
+            }
+        }
+
+        if (searchType === 'address') {
+            const address = dummyData[i]['address'].toLowerCase()
+            if (key.includes(address) || address.includes(key)) {
+                reducedDummyData.push(dummyData[i])
+            }
+        }
+    }
+    return reducedDummyData
+
+    // return dummyData; // TODO: add logic to call endpoints and get proper data  
 }
 
-// FIXME: this will actually become part of an event listener
-const searchData = search();
+function performSearch() {
+    const searchData = search();
+    refreshSearchResults(searchData);
 
-
-// FIXME: this will move to /components
-const searchResults = document.getElementById('searchResults'); // FIXME: better name than container
-searchResults.innerHTML = '';
-
-function createResultCardFromResultPojo(data) {
-    const card = document.createElement('div');
-    card.className = 'card mb-3';
-    card.innerHTML = `<a href="https://rb.gy/6gzq1">
-        <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> D08VW25</h5>
-            <p class="card-text"><!--<i class="fas fa-address-book">--></i> 61 Cork St</p>
-            <p class="card-text">
-                <i class="fas fa-star-half-alt"></i> 2.1
-                <i class="fas fa-solid fa-user ml-2"></i> 2
-                <i class="fas fa-comment ml-2"></i> 7
-            </p>
-        </div>
-    </a>`.trim();
-    return card;
 }
 
-// HERE: There is for sure some confusion that NEEDS to be addressed.
-// Add all card:
-for (var i = 0; i < 10; i++) { // FIXME: Var vs let
-    var card = createResultCardFromResultPojo(dummyData[i]);
-    // console.log(dummyData.length, i, card, dummyData[i])
-    console.log(dummyData[i])
-    // searchResults.appendChild(card);
-}
-console.log(createResultCardFromResultPojo());
+/* Event listeners */
+console.log(searchInput)
+searchInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        // Enter key was pressed
+        // Add your search function or code here
+        performSearch();
+    }
+});
+
+// inputElement.addEventListener('keydown', function (event) {
+//     if (event.keyCode === 13 || event.key === 'Enter') { // FIXME: Just use chat
+//         console.log('Enter key was pressed');
+//         refreshSearch();
+//     }
+// });

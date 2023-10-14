@@ -19,10 +19,12 @@
 
 <body>
     <div class="container mt-5">
-        <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+        <div>
+            <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+        </div>
 
         <!-- Search Form with Dropdown -->
-        <form id="searchForm" class="form-inline mb-3">
+        <form id="searchForm" class="form-inline mb-3" onsubmit="return false">
             <div class="form-group mr-2">
                 <select class="form-control" id="searchType">
                     <option value="eircode">Eircode</option>
@@ -32,16 +34,18 @@
             <div class="form-group mr-2">
                 <input type="text" class="form-control" id="searchInput" placeholder="Enter your search">
             </div>
-            <button type="button" class="btn btn-primary" onclick="performSearch">Search</button>
+            <button type="button" class="btn btn-primary search-button" onclick="performSearch()">Search</button>
         </form>
 
         <!-- Results Container -->
         <div id="searchResults" class="mt-4">
+
+
             <div class="card mb-3">
                 <a href="https://rb.gy/6gzq1">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> D08VW25</h5>
-                        <p class="card-text"><!--<i class="fas fa-address-book">--></i> 61 Cork St</p>
+                        <p class="card-text"></i> 61 Cork St</p>
                         <p class="card-text">
                             <i class="fas fa-star-half-alt"></i> 2.1
                             <i class="fas fa-solid fa-user ml-2"></i> 2
@@ -50,12 +54,14 @@
                     </div>
                 </a>
             </div>
+
             <div class="divider"></div>
+
             <div class="card mb-3">
                 <a href="#">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> E5678</h5>
-                        <p class="card-text"><!--<i class="fas fa-address-book">--></i> 22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united people's republic of greater Ireland</p>
+                        <p class="card-text"></i> 22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united people's republic of greater Ireland</p>
                         <p class="card-text">
                             <i class="fas fa-star"></i> 4.5
                             <i class="fas fa-solid fa-user ml-2"></i> 2
@@ -64,7 +70,21 @@
                     </div>
                 </a>
             </div>
+
+            <div class="divider"></div>
+
+            <div class="card mb-3" style="text-align: center;">
+                <h4>Property not listed?</h4>
+                <form id="searchForm" class="form-inline mb-3" onsubmit="return false">
+                    <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">Create Review</button>
+                </form>
+            </div>
+
+
+
         </div>
+
+
     </div>
 
     <!-- Include Bootstrap JS and Popper.js (for dropdowns) from a CDN -->
