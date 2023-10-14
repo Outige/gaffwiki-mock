@@ -13,7 +13,6 @@ function search() {
     const key = searchInput.value.trim().toLowerCase()
     const reducedDummyData = []
     const searchType = searchTypeSelect.options[searchTypeSelect.selectedIndex].value.trim().toLowerCase();
-    console.log(key, searchType, key === '')
     
     if (key === '') {
         return dummyData;
@@ -50,18 +49,9 @@ function performSearch() {
 }
 
 /* Event listeners */
-console.log(searchInput)
 searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-        // Enter key was pressed
-        // Add your search function or code here
         performSearch();
     }
 });
 
-// inputElement.addEventListener('keydown', function (event) {
-//     if (event.keyCode === 13 || event.key === 'Enter') { // FIXME: Just use chat
-//         console.log('Enter key was pressed');
-//         refreshSearch();
-//     }
-// });

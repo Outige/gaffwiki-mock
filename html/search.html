@@ -14,13 +14,20 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="../css/search.css">
-
 </head>
 
 <body>
     <div class="container mt-5">
-        <div>
-            <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+        <div class="row">
+            <div class="col-9">
+                <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+            </div>
+            <div class="col-3 text-right">
+                <div class="header-button">
+                    <button class="btn btn-primary" onclick="openReviewForm"><i class="fas fa-plus-circle"></i>
+                        Review</button>
+                </div>
+            </div>
         </div>
 
         <!-- Search Form with Dropdown -->
@@ -39,8 +46,7 @@
 
         <!-- Results Container -->
         <div id="searchResults" class="mt-4">
-
-
+            <div class="divider"></div>
             <div class="card mb-3">
                 <a href="https://rb.gy/6gzq1">
                     <div class="card-body">
@@ -61,7 +67,8 @@
                 <a href="#">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> E5678</h5>
-                        <p class="card-text"></i> 22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united people's republic of greater Ireland</p>
+                        <p class="card-text"></i> 22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united
+                            people's republic of greater Ireland</p>
                         <p class="card-text">
                             <i class="fas fa-star"></i> 4.5
                             <i class="fas fa-solid fa-user ml-2"></i> 2
@@ -70,17 +77,6 @@
                     </div>
                 </a>
             </div>
-
-            <div class="divider"></div>
-
-            <div class="card mb-3" style="text-align: center;">
-                <h4>Property not listed?</h4>
-                <form id="searchForm" class="form-inline mb-3" onsubmit="return false">
-                    <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">Create Review</button>
-                </form>
-            </div>
-
-
 
         </div>
 
@@ -93,9 +89,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Custom js -->
-    <script src="../js/data/search-data.js"></script> 
-    <script src="../js/components/search-results.js"></script> 
-    <script src="../js/search.js"></script> 
+    <script src="../js/data/search-data.js"></script>
+    <script src="../js/components/search-results.js"></script>
+    <script src="../js/search.js"></script>
 </body>
 
 </html>

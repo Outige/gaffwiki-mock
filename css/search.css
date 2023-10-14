@@ -1,14 +1,19 @@
 body {
-    font-family: 'Arial', sans-serif; /* Use a custom font */
-    background-color: #f5f5f5; /* Set a background color */
-    color: #333; /* Set text color */
+    font-family: 'Arial', sans-serif;
+    /* Use a custom font */
+    background-color: #f5f5f5;
+    /* Set a background color */
+    color: #333;
+    /* Set text color */
 }
 
 .container {
-    background-color: #fff; /* Set a container background color */
+    background-color: #fff;
+    /* Set a container background color */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    /* Add a subtle shadow */
 }
 
 h1 {
@@ -22,30 +27,37 @@ h1 {
 h1 i {
     font-size: 24px;
     margin-right: 10px;
-    color: #007bff; /* Change the icon color */
+    color: #007bff;
+    /* Change the icon color */
 }
 
 .form-control {
-    border-radius: 20px; /* Rounded input fields */
+    border-radius: 20px;
+    /* Rounded input fields */
 }
 
-.btn-primary {
-    border-radius: 20px; /* Rounded search button */
+.btn-primary,
+.btn-secondary {
+    border-radius: 20px;
+    /* Rounded search button */
 }
 
 .card {
     width: 100%;
-    border: none; /* Remove card borders */
+    border: none;
+    /* Remove card borders */
 }
 
 .divider {
-    border-top: 1px solid #ddd; /* Subtle divider line */
+    border-top: 1px solid #ddd;
+    /* Subtle divider line */
     margin: 10px 0;
 }
 
 a {
     text-decoration: none;
-    color: #333; /* Set link color */
+    color: #333;
+    /* Set link color */
 }
 
 .card-title {
@@ -64,4 +76,75 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+
+
+/* Style for the "Write a Review" button in the header */
+.header-button {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.header-button button {
+    border-radius: 20px;
+}
+
+/* Style for the "Write a Review" card at the bottom of the search results */
+.review-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.review-card .card-title {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.review-card .card-text {
+    color: #888;
+    margin: 10px 0;
+}
+
+.review-card .btn-primary {
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+/* Add CSS for card animation */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Add CSS for card animation */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
