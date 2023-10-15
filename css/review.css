@@ -1,0 +1,24 @@
+.add-pro {
+    font-size: 80%;
+}
+
+.star-rating {
+    color: #0275d8;
+}
+
+.rating-input {
+    width: 60px;
+}
+
+.review-category {
+    border: none;
+    font-weight: 400;
+    font-size: 200%;
+    max-width: 350px;
+    /*fit-content; FIXME: Just make it the size of the display text*/
+    padding: 0;
+}
+
+.review-category:focus {
+    /* border: none; FIXME: no outline*/
+}
