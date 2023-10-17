@@ -7,7 +7,7 @@ function createResultCardFromResultPojo(data) {
     }
     const card = document.createElement('div');
     card.className = 'card mb-3';
-    card.innerHTML = `<a href="property.html">
+    card.innerHTML = `<a href="${data['google_location']}">
         <div class="card-body">
             <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> ${data['eircode']}</h5>
             <p class="card-text"><!--<i class="fas fa-address-book">--></i> ${data['address']}</p>

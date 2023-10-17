@@ -47,7 +47,8 @@ function filterSearch(searchData) {
 }
 
 function performSearch() {
-    fetch('https://3mtfm3nngqn7j2bhj3uw2mprha0lvqov.lambda-url.eu-west-1.on.aws/')
+    // fetch('https://3mtfm3nngqn7j2bhj3uw2mprha0lvqov.lambda-url.eu-west-1.on.aws/')
+    fetch('https://430byk0zhf.execute-api.eu-west-1.amazonaws.com/')
         .then(response => {
             if (response.ok) {
                 return response.json();
