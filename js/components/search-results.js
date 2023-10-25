@@ -5,9 +5,13 @@ function createResultCardFromResultPojo(data) {
     if (data === undefined) {
         return // FIXME: why would it be none
     }
+    console.log(data)
+    data['rating'] = 4.5
+    data['reviewCount'] = 3
+    data['commentCount'] = 12
     const card = document.createElement('div');
     card.className = 'card mb-3';
-    card.innerHTML = `<a href="${data['google_location']}">
+    card.innerHTML = `<a href="property.html?eircode=${data['eircode']}&id=${data['id']}">
         <div class="card-body">
             <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> ${data['eircode']}</h5>
             <p class="card-text"><!--<i class="fas fa-address-book">--></i> ${data['address']}</p>

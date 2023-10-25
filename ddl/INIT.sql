@@ -23,14 +23,16 @@ CREATE TABLE WS_REVIEW (
     ID SERIAL PRIMARY KEY,
     PROPERTY_ID INTEGER REFERENCES WS_PROPERTY(ID) NOT NULL,
     TITLE VARCHAR(100) NOT NULL,
-    SUMMARY VARCHAR(2000) NOT NULL,
+    SUMMARY VARCHAR(2000) NOT NULL, -- FIXME: START - END (better names - how do we have general purpose review then?) and VERIFIED
+    VERIFIED BOOLEAN NOT NULL,
     DATE_CREATED TIMESTAMP NOT NULL,
-    DATE_MODIFIED TIMESTAMP
+    DATE_MODIFIED TIMESTAMP,
+    CHECK (DATE_MODIFIED >= DATE_CREATED)
 );
-INSERT INTO WS_REVIEW (PROPERTY_ID, TITLE, DATE_CREATED, DATE_MODIFIED) VALUES -- FIXME This breaks
-    (1, 'Wonderful location for a family!', NOW(), null),
-    (1, 'Terrible spot for a family!', '2023-10-16 14:30:00', null),
-    (2, 'Very average location for a family!', '2023-10-16 14:30:00', NOW()); -- FIXME: Constraint on updated > created
+INSERT INTO WS_REVIEW (PROPERTY_ID, TITLE, SUMMARY, VERIFIED, DATE_CREATED, DATE_MODIFIED) VALUES
+    (1, 'Wonderful location for a family!', 'Very simple summary', FALSE, NOW(), null),
+    (1, 'Terrible spot for a family!', 'Very simple summary', FALSE, '2023-10-16 14:30:00', null),
+    (2, 'Very average location for a family!', 'Very simple summary', TRUE, '2023-10-16 14:30:00', NOW()); -- FIXME: Constraint on updated > created
 
 
 
@@ -41,16 +43,16 @@ CREATE TABLE WS_REVIEW_TOPIC (
     REVIEW_ID INTEGER REFERENCES WS_REVIEW(id) NOT NULL,
     REVIEW_TOPIC VARCHAR(200) NOT NULL,
     TOPIC_SCORE FLOAT NOT NULL,
-    TOPIC_DESCRIPTION VARCHAR(2000) NOT NULL
+    TOPIC_DESCRIPTION VARCHAR(2000) NOT NULL,
     CONSTRAINT unique_topic_per_review UNIQUE (REVIEW_ID, REVIEW_TOPIC)
 );
-INSERT INTO WS_REVIEW_TOPIC (REVIEW_ID, REVIEW_TOPIC, TOPIC_SCORE, TOPIC_DESCRIPTION)
-    (1, 'SAFETY', 4.5, 'Mostly safe. Some needles here and there.')
-    (1, 'NOISE', 2.5, 'Very noisy')
-    (1, 'LOCATION', 4.5, 'Very great location')
-    (2, 'SAFETY', 4.2, 'Pretty safe.')
-    (2, 'NOISE', 4.3, 'Not noisy.')
-    (2, 'LOCATION', 4.1, 'Very stunning location.')
-    (3, 'SAFETY', 3.2, 'Kinda safe.')
-    (3, 'NOISE', 1.4, 'Super noisy.')
+INSERT INTO WS_REVIEW_TOPIC (REVIEW_ID, REVIEW_TOPIC, TOPIC_SCORE, TOPIC_DESCRIPTION) VALUES
+    (1, 'SAFETY', 4.5, 'Mostly safe. Some needles here and there.'),
+    (1, 'NOISE', 2.5, 'Very noisy'),
+    (1, 'LOCATION', 4.5, 'Very great location'),
+    (2, 'SAFETY', 4.2, 'Pretty safe.'),
+    (2, 'NOISE', 4.3, 'Not noisy.'),
+    (2, 'LOCATION', 4.1, 'Very stunning location.'),
+    (3, 'SAFETY', 3.2, 'Kinda safe.'),
+    (3, 'NOISE', 1.4, 'Super noisy.'),
     (3, 'LOCATION', 1.2, 'Nice views!');
