@@ -51,6 +51,7 @@ function performSearch() {
     })
     .then(data => {
         console.log(data);
+        refreshReviews(data)
     })
     .catch(error => {
         console.error('Error:', error);
@@ -58,4 +59,7 @@ function performSearch() {
 }
 
 // Update property details on page load
-performSearch()
+document.addEventListener('DOMContentLoaded', function() {
+    performSearch();
+});
+
