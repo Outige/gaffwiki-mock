@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaffWiki</title>
+
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/review.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+                <h1>G<i class="fas fa-home"></i>ffWiki</h1>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <form>
+            <!-- <h2 class="mb-4">Property Review</h2> -->
+
+            <!-- Review Sections -->
+            <div class="form-group">
+
+                <!-- Date Picker Section -->
+                <h3>When did you live here</h3>
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-3">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="endDate">End Date</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                </div>
+
+
+                <!-- <div class="review-section mb-5">
+                    <h3>
+                        Safety
+                    </h3>
+
+                    <div class="stars ml-2">
+                        <div class="row align-items-center">
+                            <div class="col-md-1 text-left">
+                                <input type="number" class="form-control rating-input" min="0" max="5" step="1" required
+                                    onkeydown="return false">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="star-rating">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <textarea class="form-control my-2 ml-2" name="locationReview" rows="3"
+                        placeholder="Add your review for the location here..." required></textarea>
+                </div> -->
+
+
+                <!-- <div class="review-section mb-5">
+                    <div class="dropdown">
+                        <select class="form-control custom-select mb-1 review-category" required="true">
+                            <option value="" disabled selected>Select review category</option>
+                            <option value="safety">Safety</option>
+                            <option value="noise">Noise</option>
+                            <option value="landlord">Landlord</option>
+                        </select>
+                    </div>
+
+
+                    <div class="stars ml-2">
+                        <div class="row align-items-center">
+                            <div class="col-md-1 text-left">
+                                <input type="number" class="form-control rating-input" min="0" max="5" step="1" required
+                                    onkeydown="return false">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="star-rating">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <textarea class="form-control my-2 ml-2" name="locationReview" rows="3"
+                        placeholder="Add your review for the location here..." required></textarea>
+                </div> -->
+
+                <div class="text-center">
+                    <button class="btn btn-secondary mb-5 add-review-category text-center" onclick="return false"><i
+                        class="fas fa-plus-circle"></i> Review Topic</button>
+                </div>
+
+
+                <!-- Add more sections as needed -->
+
+                <!-- Pros Section -->
+                <div class="review-section mb-5">
+                    <h3>Pros</h3>
+                    <div class="pros">
+                        <!-- <input type="text" name="pro2" class="form-control col-4 mb-1" placeholder="Pro..."
+                            required="true">
+                        <input type="text" name="pro2" class="form-control col-4 mb-1" placeholder="Pro..."
+                            required="true"> -->
+                    </div>
+                    <button class="btn btn-secondary mt-1 add-pro" onclick="return false"><i
+                            class="fas fa-plus-circle"></i> Add</button>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+
+
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js (for dropdowns) from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom js -->
+    <script src="../js/review.js"></script>
+
+</body>
+
+</html>

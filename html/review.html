@@ -27,113 +27,209 @@
 
         <div class="divider"></div>
 
+        <style>
+            /* Add this CSS to your existing stylesheet or a new one */
+
+            /* Style the form */
+            form {
+                background-color: #f7f7f7;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+
+            /* Style labels */
+            form label {
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            /* Style input fields */
+            form input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+            /* Style the submit button */
+            form input[type="submit"] {
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            /* Style the submit button on hover */
+            form input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+            .topic-form {
+                background-color: #fbfbfb;
+            }
+
+            .no-form-errors {
+                display: none;
+            }
+        </style>
+
         <form>
-            <!-- <h2 class="mb-4">Property Review</h2> -->
+            <label for="eircode">Eircode:</label>
+            <input type="text" id="eircode" name="eircode" value="E5678" disabled="true">
 
-            <!-- Review Sections -->
-            <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address"
+                value="22 Tivoli Terrace South, Dun Laoghaire, County Dublin, The united people's republic of greater Ireland"
+                disabled="true">
 
-                <!-- Date Picker Section -->
-                <h3>When did you live here</h3>
-                <div class="row mb-5">
-                    <div class="col-md-6 mb-3">
-                        <label for="startDate">Start Date</label>
-                        <input type="date" class="form-control" id="startDate">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="endDate">End Date</label>
-                        <input type="date" class="form-control" id="endDate">
-                    </div>
-                </div>
-
-
-                <!-- <div class="review-section mb-5">
-                    <h3>
-                        Safety
-                    </h3>
-
-                    <div class="stars ml-2">
-                        <div class="row align-items-center">
-                            <div class="col-md-1 text-left">
-                                <input type="number" class="form-control rating-input" min="0" max="5" step="1" required
-                                    onkeydown="return false">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="star-rating">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <textarea class="form-control my-2 ml-2" name="locationReview" rows="3"
-                        placeholder="Add your review for the location here..." required></textarea>
-                </div> -->
-
-
-                <!-- <div class="review-section mb-5">
-                    <div class="dropdown">
-                        <select class="form-control custom-select mb-1 review-category" required="true">
-                            <option value="" disabled selected>Select review category</option>
-                            <option value="safety">Safety</option>
-                            <option value="noise">Noise</option>
-                            <option value="landlord">Landlord</option>
-                        </select>
-                    </div>
-
-
-                    <div class="stars ml-2">
-                        <div class="row align-items-center">
-                            <div class="col-md-1 text-left">
-                                <input type="number" class="form-control rating-input" min="0" max="5" step="1" required
-                                    onkeydown="return false">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="star-rating">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <textarea class="form-control my-2 ml-2" name="locationReview" rows="3"
-                        placeholder="Add your review for the location here..." required></textarea>
-                </div> -->
-
-                <div class="text-center">
-                    <button class="btn btn-secondary mb-5 add-review-category text-center" onclick="return false"><i
-                        class="fas fa-plus-circle"></i> Review Topic</button>
-                </div>
-
-
-                <!-- Add more sections as needed -->
-
-                <!-- Pros Section -->
-                <div class="review-section mb-5">
-                    <h3>Pros</h3>
-                    <div class="pros">
-                        <!-- <input type="text" name="pro2" class="form-control col-4 mb-1" placeholder="Pro..."
-                            required="true">
-                        <input type="text" name="pro2" class="form-control col-4 mb-1" placeholder="Pro..."
-                            required="true"> -->
-                    </div>
-                    <button class="btn btn-secondary mt-1 add-pro" onclick="return false"><i
-                            class="fas fa-plus-circle"></i> Add</button>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">Submit Review</button>
+            <!-- <input type="submit" value="Submit"> -->
         </form>
 
+        <form onsubmit="return false;" id="review-details-form">
+            <h4>Review details</h4>
+            <div class="divider"></div>
+            <label for="address">Start date:</label>
+            <p>When did you start staying at this property?</p>
+            <input type="date" class="form-control" id="start-date-input">
+
+            <label for="address" class="mt-4">End date/Present:</label>
+            <p>When did you move out of this property</p>
+            <input type="date" class="form-control" id="end-date-input">
+            
+            <form class="error-form">
+                <div class="no-form-errors" id="review-details-error-container">
+                    <label class="mt-4">Error(s)</label>
+                    <input type="text" disabled="true" value="Invalid start and end date." class="error-input text-danger">
+                </div>
+            </form>
+        </form>
+
+        <style>
+            .centered-container {
+                text-align: center;
+            }
+
+            .centered-button {
+                margin: 0 auto;
+            }
+        </style>
+
+        <form onsubmit="return false;">
+            <h4>Topics</h4>
+            <div class="divider"></div>
+            <div class="centered-container">
+                <button class="btn btn-primary mt-3 centered-button" data-toggle="modal" data-target="#newSectionModal"
+                    id="add-topic-button">
+                    <i class="fas fa-plus-circle"></i> Topic
+                </button>
+            </div>
+
+            <form class="error-form">
+                <div class="no-form-errors" id="topics-error-container">
+                    <label class="mt-4">Error(s)</label>
+                    <input type="text" disabled="true" value="Invalid start and end date." class="error-input text-danger">
+                </div>
+            </form>
+        </form>
+
+        <form onsubmit="submitReview(); return false;">
+            <div class="centered-container">
+                <button class="btn btn-primary centered-button">
+                    Submit review
+                </button>
+            </div>
+        </form>
+
+        <!-- <form onsubmit="showErrorText(); return false;">
+            <div class="centered-container">
+                <button class="btn btn-primary centered-button">
+                    Submit review
+                </button>
+                <p id="errorText" class="text-danger" style="display: none;">An error occurred while submitting the
+                    form.</p>
+            </div>
+        </form>
+
+        <script>
+            function showErrorText() {
+                var errorText = document.getElementById('errorText');
+                errorText.style.display = 'block';
+            }
+        </script> -->
+
+
+
+
+        <!-- </form> -->
+
+        <!-- Modal Form -->
+        <div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newSectionModalLabel">Create New Section</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="newSectionForm">
+                            <div class="form-group">
+                                <label for="sectionType">Review topic</label>
+                                <select class="form-control" id="topic-type">
+                                    <option disabled="true" selected>Select review topic..</option>
+                                    <option value="type1">View</option>
+                                    <option value="type2">Noise</option>
+                                    <option value="type3">Appearance</option>
+                                </select>
+                                <div id="topic-error-message" class="ml-2 invalid-feedback is-invalid d-block"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sectionContent">Topic description</label>
+                                <textarea class="form-control" id="sectionContent"
+                                    placeholder="Justify the reason for your topic score.."></textarea>
+                                <span class="ml-2" id="description-character-limit">2000 characters</span>
+                                <div id="description-error-message" class="ml-2 invalid-feedback is-invalid d-block">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sectionRating">Rating</label>
+                                <input class="form-control section-rating" type="text"
+                                    placeholder="Star rating 0.0 to 5.0..." id="modal-rating">
+                                <div id="rating-error-message" class="ml-2 invalid-feedback is-invalid d-block"></div>
+
+                                <!-- <select class="form-control" id="sectionRating">
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select> -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="createNewSection()">Create
+                            Section</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add this JavaScript code after including your other scripts -->
 
     </div>
+
+
 
     <!-- Include Bootstrap JS and Popper.js (for dropdowns) from a CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
