@@ -1,25 +1,26 @@
 const descriptionElement = document.getElementById("sectionContent");
 const descriptionCharacterLimitElement = document.getElementById("description-character-limit");
 var unusedTopics = null;
+const propertyObj = null;
 
 function getTopics() {
     return {
         "Curb Appeal": true,
         "Crime Rate": true,
         "Dated Interior": true,
-        // "Entertainment": true,
-        // "Environmental Hazards": true,
-        // "Home Office": true,
-        // "Location": true,
-        // "Neighbours": true,
-        // "Noise": true,
-        // "Safety": true,
-        // "School District": true,
-        // "Smell": true,
-        // "Structural Issues": true,
-        // "Storage Space": true,
-        // "Traffic": true,
-        // "Upgrades": true,
+        "Entertainment": true,
+        "Environmental Hazards": true,
+        "Home Office": true,
+        "Location": true,
+        "Neighbours": true,
+        "Noise": true,
+        "Safety": true,
+        "School District": true,
+        "Smell": true,
+        "Structural Issues": true,
+        "Storage Space": true,
+        "Traffic": true,
+        "Upgrades": true,
         "View": true
     };
 }
@@ -134,7 +135,22 @@ function validateReviewDetails() { // FIXME: If it was logically linked to 1 for
         errorContainer.classList.remove("no-form-errors");
         errorInput.value = "Missing start or end date."
         return false;
-    } 
+    }
+
+    const title = document.getElementById('title-input').value;
+    if (title.trim().length == 0) {
+        errorContainer.classList.remove("no-form-errors");
+        errorInput.value = "Missing Title."
+        return false;
+    }
+    const summary = document.getElementById('summary-input').value;
+    if (summary.trim().length == 0) {
+        errorContainer.classList.remove("no-form-errors");
+        errorInput.value = "Missing Summary."
+        return false;
+    }
+
+
     return true;
 }
 
@@ -148,6 +164,7 @@ function validateTopics() {
     if (topics.length < 3) {
         errorContainer.classList.remove("no-form-errors");
         errorInput.value = "A minimum of 3 unique review topics are required."
+        return false;
     }
 
     return true;
@@ -200,7 +217,7 @@ function createNewSectionHtml() {
     <h2 class="review-topic">${topic}</h2>
     <p>${description}</p>
     <label for="topic-rating">Topic Rating:</label>
-    <p>${rating} <i class="fas fa-star"></i></p>`;
+    <p>${rating}</p>`;
     addTopicButton.parentElement.parentElement.insertBefore(form, addTopicButton.parentElement);
     // console.log(addTopicButton, addTopicButton.parentElement, addTopicButton.parentElement.parentElement);
 }
@@ -239,6 +256,7 @@ function createNewSection() {
 
 function submitReview() {
     if (validateReviewInputs()) {
+        httpSubmitReview();
         console.log(`FIXME: Gather the review and post the review and on a callback
         redirect to the property page. Need to load in data from the property id on this page to start`)
     }
@@ -249,4 +267,110 @@ updateDescriptionCharacterLimit()
 unusedTopics = getTopics();
 refreshUnusedTopics();
 
-descriptionElement.addEventListener("keydown", updateDescriptionCharacterLimit); 
+descriptionElement.addEventListener("keydown", updateDescriptionCharacterLimit);
+
+
+
+
+/* late addition to load in the property details */
+// FIXME: Can move a lot of validation to validation file
+// FIXME: Can move htmly code to file
+function performSearch() {
+    const devEndpoint = 'https://68vfhgotm0.execute-api.eu-west-1.amazonaws.com'; // Should be properties 
+    const prodEndpoint = 'https://drixy6cd52.execute-api.eu-west-1.amazonaws.com';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const eircode = urlParams.get('eircode'); 
+    fetch(`${devEndpoint}/property/${eircode}`) // FIXME: This is experimental
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(data => {
+            this.propertyObj = data;
+            refreshPropertyDetails(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Update property details on page load
+document.addEventListener('DOMContentLoaded', function() {
+    performSearch();
+});
+
+function refreshPropertyDetails(data) {
+    const propertyDetails = document.getElementById("property-details");
+    const propertyDetailsSpinner = document.getElementById("property-details-spinner");
+    const eircode = document.getElementById("eircode");
+    const address = document.getElementById("address");
+
+    propertyDetails.classList.remove("hide");
+    propertyDetailsSpinner.classList.add("hide");
+    eircode.value = data.eircode;
+    address.value = data.address;
+
+
+    console.log(data);
+}
+
+
+
+function httpSubmitReview() {
+    // Gather form data
+    const eircode = document.getElementById('eircode').value;
+    const startDate = document.getElementById('start-date-input').value;
+    const endDate = document.getElementById('end-date-input').value;
+    const title = document.getElementById('title-input').value;
+    const summary = document.getElementById('summary-input').value;
+
+    const topics = [];
+    const topicForms = document.querySelectorAll('.topic-form');
+    topicForms.forEach(form => {
+        const topicName = form.querySelector('.review-topic').innerText;
+        const topicDescription = form.querySelectorAll('p')[0].innerText;
+        const topicRating = form.querySelectorAll('p')[1].innerText;
+
+        topics.push({
+            topicName,
+            topicDescription,
+            topicRating,
+        });
+    });
+
+    const payload = {
+        eircode,
+        startDate,
+        endDate,
+        topics,
+        title,
+        summary
+    };
+
+    console.log(JSON.stringify(payload));
+    const devEndpoint = 'https://68vfhgotm0.execute-api.eu-west-1.amazonaws.com'; // Should be properties 
+    const prodEndpoint = 'https://drixy6cd52.execute-api.eu-west-1.amazonaws.com';
+
+    fetch(`${devEndpoint}/review`, {
+        method: 'POST',
+        body: JSON.stringify(payload)}) // FIXME: hacked to not need headers but it's a bandage
+        .then(response => {
+            if (response.ok) {
+                window.location.href = `property.html?eircode=${this.propertyObj.eircode}&id=${this.propertyObj.id}`;
+                // return response.json();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(data => {
+            console.log(data)
+            // refreshPropertyDetails(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}

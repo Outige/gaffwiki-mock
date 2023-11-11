@@ -1,5 +1,7 @@
 // Constants
 const seeMoreLess = document.querySelectorAll('.see-more-less');
+const propertyObj = null;
+
 // document.getElementsByTagName('body')[0].innerHTML = ''; // FIXME: This might annoy you later. Should probably start with a loading screen that disables once data comes in 
 
 // Functions
@@ -34,6 +36,7 @@ function performSearch() {
             }
         })
         .then(data => {
+            this.propertyObj = data;
             refreshPropertyDetails(data);
         })
         .catch(error => {
@@ -63,3 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     performSearch();
 });
 
+
+function openReviewForm() {
+    window.location.href = `review.html?eircode=${this.propertyObj.eircode}`;
+}
